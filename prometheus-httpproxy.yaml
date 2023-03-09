@@ -1,0 +1,16 @@
+---
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: prometheus-server
+  namespace: tanzu-system-monitoring
+  labels:
+    app: prometheus
+    component: server
+spec:
+  virtualhost:
+    fqdn: prometheus.home.virtualelephant.com
+  routes:
+    - services:
+      - name: prometheus-server
+        port: 80
